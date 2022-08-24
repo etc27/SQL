@@ -1,0 +1,49 @@
+/* Practice data set with Mario Party characters */
+
+CREATE TABLE mario_party (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    wins INTEGER,
+    total_stars INTEGER,
+    losses INTEGER,
+    total_coins INTEGER,
+    original TEXT
+    );
+    
+INSERT INTO mario_party(name, wins, total_stars, losses, total_coins, original) VALUES ("Mario", 10, 20, 5, 700, "yes");
+INSERT INTO mario_party(name, wins, total_stars, losses, total_coins, original) VALUES ("Luigi", 0, 3, 25, 60, "yes");
+INSERT INTO mario_party(name, wins, total_stars, losses, total_coins, original) VALUES ("Peach", 3, 7, 18, 1000, "yes");
+INSERT INTO mario_party(name, wins, total_stars, losses, total_coins, original) VALUES ("Monty Mole", 8, 25, 12, 7850, "no");
+INSERT INTO mario_party(name, wins, total_stars, losses, total_coins, original) VALUES ("Shy Guy", 9, 18, 16, 900, "no");
+INSERT INTO mario_party(name, wins, total_stars, losses, total_coins, original) VALUES ("Yoshi", 4, 12, 20, 600, "yes");
+INSERT INTO mario_party(name, wins, total_stars, losses, total_coins, original) VALUES ("Donkey Kong", 1, 4, 21, 200, "yes");
+INSERT INTO mario_party(name, wins, total_stars, losses, total_coins, original) VALUES ("Hammer Bro", 5, 12, 15, 920, "no");
+INSERT INTO mario_party(name, wins, total_stars, losses, total_coins, original) VALUES ("Koopa", 8, 18, 25, 970, "no");
+INSERT INTO mario_party(name, wins, total_stars, losses, total_coins, original) VALUES ("Bowser", 10, 25, 9, 1500, "no");
+INSERT INTO mario_party(name, wins, total_stars, losses, total_coins, original) VALUES ("Birdo", 0, 0, 25, 10, "yes");
+INSERT INTO mario_party(name, wins, total_stars, losses, total_coins, original) VALUES ("Waluigi", 1, 1, 19, 90, "yes");
+INSERT INTO mario_party(name, wins, total_stars, losses, total_coins, original) VALUES ("Wario", 2, 4, 10, 660, "yes");
+INSERT INTO mario_party(name, wins, total_stars, losses, total_coins, original) VALUES ("Daisy", 2, 2, 6, 550, "yes");
+INSERT INTO mario_party(name, wins, total_stars, losses, total_coins, original) VALUES ("Rosalina", 10, 30, 5, 1200, "no");
+INSERT INTO mario_party(name, wins, total_stars, losses, total_coins, original) VALUES ("Goomba", 3, 7, 16, 880, "no");
+INSERT INTO mario_party(name, wins, total_stars, losses, total_coins, original) VALUES ("Pom Pom", 0, 0, 0, 0, "no");
+INSERT INTO mario_party(name, wins, total_stars, losses, total_coins, original) VALUES ("Dry Bones", 0, 1, 3, 90, "no");
+INSERT INTO mario_party(name, wins, total_stars, losses, total_coins, original) VALUES ("Bowser Jr.", 3, 7, 8, 400, "no");
+INSERT INTO mario_party(name, wins, total_stars, losses, total_coins, original) VALUES ("Diddy Kong", 1, 3, 2, 230, "no");
+
+/* Select all values */
+SELECT * FROM mario_party;
+/* Select some statistics */
+SELECT AVG(total_coins) AS avg_coins, MAX(wins) AS max_wins, MIN(WINS) AS min_wins FROM mario_party;
+/* Count original characters */
+SELECT COUNT(*) FROM mario_party GROUP BY original HAVING original=="yes";
+/* Group data values corresponding to number of wins */
+SELECT name,
+    CASE
+        WHEN wins > 7 THEN "high"
+        WHEN wins == 2 THEN "medium"
+        ELSE "low"
+    END AS "win group"
+FROM mario_party;
+/* Filter data */
+SELECT name FROM mario_party WHERE total_coins > 300 AND total_stars > 10;
