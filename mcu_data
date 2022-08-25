@@ -1,4 +1,4 @@
-/* Create table of MCU actors */
+/* Data set of MCU actors and content */
 CREATE TABLE actors (id INTEGER PRIMARY KEY AUTOINCREMENT, fullname TEXT, marvel_character TEXT, marvel_count INTEGER); 
 
 INSERT INTO actors (fullname, marvel_character, marvel_count) VALUES ("Robert Downey Jr.", "Tony Stark", 9);
