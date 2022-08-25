@@ -1,0 +1,61 @@
+/* Create table of MCU actors */
+CREATE TABLE actors (id INTEGER PRIMARY KEY AUTOINCREMENT, fullname TEXT, marvel_character TEXT, marvel_count INTEGER); 
+
+INSERT INTO actors (fullname, marvel_character, marvel_count) VALUES ("Robert Downey Jr.", "Tony Stark", 9);
+INSERT INTO actors (fullname, marvel_character, marvel_count) VALUES ("Chris Evans", "Steve Rogers", 8);
+INSERT INTO actors (fullname, marvel_character, marvel_count) VALUES ("Brie Larson", "Carol Danvers", 3);
+INSERT INTO actors (fullname, marvel_character, marvel_count) VALUES ("Chris Hemsworth", "Thor", 8);
+INSERT INTO actors (fullname, marvel_character, marvel_count) VALUES ("Chris Pratt", "Peter Quinn", 5);
+INSERT INTO actors (fullname, marvel_character, marvel_count) VALUES ("Paul Rudd", "Scott Lang", 5);
+INSERT INTO actors (fullname, marvel_character, marvel_count) VALUES ("Tom Holland", "Peter Parker", 6);
+INSERT INTO actors (fullname, marvel_character, marvel_count) VALUES ("Benedict Cumberbatch", "Stephen Strange", 5);
+INSERT INTO actors (fullname, marvel_character, marvel_count) VALUES ("Chadwick Boseman", "T'Challa", 4);
+INSERT INTO actors (fullname, marvel_character, marvel_count) VALUES ("Scarlett Johansson", "Natasha Romanoff", 9);
+INSERT INTO actors (fullname, marvel_character, marvel_count) VALUES ("Josh Brolin", "Thanos", 3);
+INSERT INTO actors (fullname, marvel_character, marvel_count) VALUES ("Tom Hiddleston", "Loki", 6);
+INSERT INTO actors (fullname, marvel_character, marvel_count) VALUES ("Jeffery Wright", "The Watcher", 1);
+INSERT INTO actors (fullname, marvel_character, marvel_count) VALUES ("Elizabeth Olsen", "Wanda Maximoff", 6);
+INSERT INTO actors (fullname, marvel_character, marvel_count) VALUES ("Anthony Mackie", "Sam Wilson", 6);
+INSERT INTO actors (fullname, marvel_character, marvel_count) VALUES ("Simu Liu", "Shang-Chi", 1);
+INSERT INTO actors (fullname, marvel_character, marvel_count) VALUES ("Gemma Chan", "Sersi", 1);
+INSERT INTO actors (fullname, marvel_character, marvel_count) VALUES ("Hailee Steinfeld", "Kate Bishop", 1);
+INSERT INTO actors (fullname, marvel_character, marvel_count) VALUES ("Oscar Isaac", "Steven Grant", 1);
+INSERT INTO actors (fullname, marvel_character, marvel_count) VALUES ("Iman Vellani", "Kamala Khan", 1);
+INSERT INTO actors (fullname, marvel_character, marvel_count) VALUES ("Tatiana Maslany", "Jennifer Walters", 1);
+
+/* Create table of MCU shows and movies */
+
+CREATE TABLE marvel_content (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, main_character_id INTEGER, release_year INTEGER, year_set INTEGER);
+
+INSERT INTO marvel_content (name, main_character_id, release_year, year_set) VALUES ("Iron Man",  1, 2008, 2008);
+INSERT INTO marvel_content (name, main_character_id, release_year, year_set) VALUES ("Captain America: The First Avenger",  2, 2011, 1942);
+INSERT INTO marvel_content (name, main_character_id, release_year, year_set) VALUES ("Captain Marvel",  3, 2019, 1995);
+INSERT INTO marvel_content (name, main_character_id, release_year, year_set) VALUES ("Thor",  4, 2011, 2011);
+INSERT INTO marvel_content (name, main_character_id, release_year, year_set) VALUES ("Guardians of the Galaxy",  5, 2014, 2014);
+INSERT INTO marvel_content (name, main_character_id, release_year, year_set) VALUES ("Ant-Man",  6, 2015, 2015);
+INSERT INTO marvel_content (name, main_character_id, release_year, year_set) VALUES ("Spiderman: Homecoming",  7, 2017, 2016);
+INSERT INTO marvel_content (name, main_character_id, release_year, year_set) VALUES ("Doctor Strange",  8, 2016, 2016);
+INSERT INTO marvel_content (name, main_character_id, release_year, year_set) VALUES ("Black Panther",  9, 2018, 2016);
+INSERT INTO marvel_content (name, main_character_id, release_year, year_set) VALUES ("Black Widow",  10, 2021, 2018);
+INSERT INTO marvel_content (name, main_character_id, release_year, year_set) VALUES ("Avengers: Infinity War",  11, 2018, 2018);
+INSERT INTO marvel_content (name, main_character_id, release_year) VALUES ("Loki",  12, 2021);
+INSERT INTO marvel_content (name, main_character_id, release_year) VALUES ("What If",  13, 2021);
+INSERT INTO marvel_content (name, main_character_id, release_year, year_set) VALUES ("WandaVision",  14, 2021, 2023);
+INSERT INTO marvel_content (name, main_character_id, release_year, year_set) VALUES ("The Falcon and the Winter Soldier",  15, 2021, 2024);
+INSERT INTO marvel_content (name, main_character_id, release_year, year_set) VALUES ("Shang-Chi and the Legend of the Ten Rings",  16, 2021, 2024);
+INSERT INTO marvel_content (name, main_character_id, release_year, year_set) VALUES ("Eternals",  17, 2021, 2024);
+INSERT INTO marvel_content (name, main_character_id, release_year, year_set) VALUES ("Hawkeye",  18, 2021, 2024);
+INSERT INTO marvel_content (name, main_character_id, release_year, year_set) VALUES ("Moon Knight",  19, 2022, 2025);
+INSERT INTO marvel_content (name, main_character_id, release_year, year_set) VALUES ("Ms. Marvel",  20, 2022, 2025);
+INSERT INTO marvel_content (name, main_character_id, release_year, year_set) VALUES ("She-Hulk: Attorney at Law",  21, 2022, 2025);
+
+/* View data */
+
+SELECT * FROM actors ORDER BY marvel_count DESC;
+SELECT * FROM marvel_content ORDER BY year_set;
+
+/* join movie or show data with actor data */
+
+SELECT actors.fullname AS actor, actors.marvel_character AS character, marvel_content.name AS movie FROM actors
+    JOIN marvel_content
+    ON actors.id == marvel_content.main_character_id;
