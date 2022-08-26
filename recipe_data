@@ -1,0 +1,19 @@
+/* Sample data from recipe recording app */
+
+CREATE TABLE recipe_app (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, date TEXT, rating INTEGER, comments TEXT, deleted INTEGER);
+
+INSERT INTO recipe_app (name, date, rating, comments) VALUES ("fried rice", "2022-08-22", 5, "delicious!");
+INSERT INTO recipe_app (name, date, rating, comments) VALUES ("potato curry", "2022-08-23", 3, "bland");
+INSERT INTO recipe_app (name, date, rating, comments) VALUES ("hamburgers", "2022-08-25", 2, "not enough vegetables");
+INSERT INTO recipe_app (name, date, rating, comments) VALUES ("soba noodles", "2022-08-27", 5, "refreshing on a hot day");
+INSERT INTO recipe_app (name, date, rating, comments) VALUES ("eggplant parm", "2022-08-29", 4, "very good");
+
+SELECT * FROM recipe_app;
+
+UPDATE recipe_app SET date = "2022-09-01", rating = 5, comments = "added 1.5x salt" WHERE name LIKE "%potato curry%";
+UPDATE recipe_app SET date = "2022-09-03", rating = 4, comments = "made side salad" WHERE name LIKE "%hamburgers%";
+
+UPDATE recipe_app SET deleted=1 WHERE name LIKE "%eggplant parm%";
+DELETE FROM recipe_app WHERE deleted = 1;
+
+SELECT * FROM recipe_app;
